@@ -27,7 +27,7 @@ src_prepare() {
 }
 
 src_configure() {
-	cmake .. -DBUILD_TYPE=Release
+	cmake .. -DBUILD_TYPE=Release -DLIBRARY_INSTALL_DIRECTORY=lib64
 }
 
 #src_compile() {
