@@ -17,6 +17,7 @@ DEPEND="media-gfx/graphviz
 	dev-libs/jsoncpp
 	sys-libs/readline
 	dev-util/cmake[qt5]
+	dev-qt/qtxml
 	|| ( sys-devel/gcc sys-devel/clang )"
 
 src_prepare() {
