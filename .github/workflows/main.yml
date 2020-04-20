@@ -24,9 +24,9 @@ jobs:
         echo "location = $GITHUB_WORKSPACE" >> /etc/portage/repos.conf/trpasle-overlay.conf
         eselect profile set default/linux/amd64/17.1
         mkdir --parent --verbose /etc/portage/package.accept_keywords
-        export EMERGE_DEFAULT_OPTS=--jobs
+        echo 'EMERGE_DEFAULT_OPTS=--jobs' >> /etc/portage/make.conf
         echo "sci-misc/alt" ~amd64 >> /etc/portage/package.accept_keywords/testbuild
     - name: emerge
       run: |
-        USE='-ncurses -qt5' emerge --oneshot dev-util/cmake
-        emerge sci-misc/alt
+        USE='-ncurses -qt5' emerge --oneshot --autounmask-write=y dev-util/cmake
+        emerge --autounmask-write=y sci-misc/alt
