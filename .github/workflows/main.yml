@@ -10,12 +10,12 @@ jobs:
     steps:
     - uses: actions/checkout@master
     - uses: hacking-gentoo/action-repoman@master
-  build:
+  build-alt:
     container: gentoo/stage3-amd64
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2 # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-    - name: ebuild test
+    - name: prepare environment
       run: |
         mkdir --parent --verbose /etc/portage/repos.conf
         echo '[trpasle]' > /etc/portage/repos.conf/trpasle-overlay.conf
@@ -26,5 +26,7 @@ jobs:
         mkdir --parent --verbose /etc/portage/package.accept_keywords
         export EMERGE_DEFAULT_OPTS=--jobs
         echo "sci-misc/alt" ~amd64 >> /etc/portage/package.accept_keywords/testbuild
+    - name: emerge
+      run: |
         USE='-ncurses -qt5' emerge --oneshot dev-util/cmake
         emerge sci-misc/alt
