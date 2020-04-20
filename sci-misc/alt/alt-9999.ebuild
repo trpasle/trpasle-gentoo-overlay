@@ -22,12 +22,12 @@ DEPEND="media-gfx/graphviz
 src_prepare() {
 	mkdir --verbose build && cd build/
 	S="${WORKDIR}/${P}/build"
-	../CMake/generate.py -wm
+	../CMake/generate.py -wm || die
 	default
 }
 
 src_configure() {
-	cmake .. -DBUILD_TYPE=Release -DLIBRARY_INSTALL_DIRECTORY=lib64
+	cmake .. -DBUILD_TYPE=Release -DLIBRARY_INSTALL_DIRECTORY=lib64 || die
 }
 
 #src_compile() {
