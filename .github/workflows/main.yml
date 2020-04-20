@@ -21,12 +21,12 @@ jobs:
         echo '[trpasle]' > /etc/portage/repos.conf/trpasle-overlay.conf
         echo "$GITHUB_WORKSPACE" >> /etc/portage/repos.conf/trpasle-overlay.conf
         cat /etc/portage/repos.conf/trpasle-overlay.conf
+    - name: emerge
+      run: |
         eselect profile set default/linux/amd64/17.1
         eselect profile show
         mkdir --parent --verbose /etc/portage/package.accept_keywords
         export EMERGE_DEFAULT_OPTS=--jobs
         echo "sci-misc/alt" ~amd64 >> /etc/portage/package.accept_keywords/testbuild
-    - name: emerge
-      run: |
         USE='-ncurses -qt5' emerge --oneshot dev-util/cmake
         emerge sci-misc/alt
