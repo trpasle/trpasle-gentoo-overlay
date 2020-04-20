@@ -1,32 +1,29 @@
-# This is a basic workflow to help you get started with Actions
-
 name: ebuild-test
 
-# Controls when the action will run. Triggers the workflow on push or pull request
-# events but only for the master branch
 on:
   push :
   pull_request:
 
-# A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
   repoman:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@master
-    - uses: hacking-gentoo/action-repoman@master  # This workflow contains a single job called "build"
+    - uses: hacking-gentoo/action-repoman@master
   build:
     container: gentoo/stage3-amd64
-    # The type of runner that the job will run on
     runs-on: ubuntu-latest
-
-    # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
     # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
     - uses: actions/checkout@v2
-
-    # Runs a set of commands using the runners shell
     - name: ebuild test
       run: |
-        echo Add other actions to build,
-        emerge --info
+        mkdir --parent /etc/portage/repos.conf
+        echo '[trpasle]' > /etc/portage/repos.conf/trpasle-overlay.conf
+        echo "$GITHUB_WORKSPACE" >> /etc/portage/repos.conf/trpasle-overlay.conf
+        eselect profile set default/linux/amd64/17.1
+        mkdir --parent /etc/portage/package.accept_keywords
+        echo "sci-misc/alt" ~amd64 >> /etc/portage/package.accept_keywords/testbuild
+        export EMERGE_DEFAULT_OPTS=--jobs
+        USE='-ncurses -qt5' emerge --oneshot dev-util/cmake
+        emerge sci-misc/alt
