@@ -14,16 +14,17 @@ jobs:
     container: gentoo/stage3-amd64
     runs-on: ubuntu-latest
     steps:
-    # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v2 # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
     - name: ebuild test
       run: |
-        mkdir --parent /etc/portage/repos.conf
+        mkdir --parent --verbose /etc/portage/repos.conf
         echo '[trpasle]' > /etc/portage/repos.conf/trpasle-overlay.conf
         echo "$GITHUB_WORKSPACE" >> /etc/portage/repos.conf/trpasle-overlay.conf
+        cat /etc/portage/repos.conf/trpasle-overlay.conf
         eselect profile set default/linux/amd64/17.1
-        mkdir --parent /etc/portage/package.accept_keywords
-        echo "sci-misc/alt" ~amd64 >> /etc/portage/package.accept_keywords/testbuild
+        eselect profile show
+        mkdir --parent --verbose /etc/portage/package.accept_keywords
         export EMERGE_DEFAULT_OPTS=--jobs
+        echo "sci-misc/alt" ~amd64 >> /etc/portage/package.accept_keywords/testbuild
         USE='-ncurses -qt5' emerge --oneshot dev-util/cmake
         emerge sci-misc/alt
