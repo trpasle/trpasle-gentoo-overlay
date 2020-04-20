@@ -15,9 +15,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2 # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-    - uses: hacking-gentoo/action-fetch-portage@v1.0.0
     - name: prepare environment
       run: |
+        emerge-webrsync --quiet
         mkdir --parent --verbose /etc/portage/repos.conf
         echo '[trpasle]' > /etc/portage/repos.conf/trpasle-overlay.conf
         echo "$GITHUB_WORKSPACE" >> /etc/portage/repos.conf/trpasle-overlay.conf
