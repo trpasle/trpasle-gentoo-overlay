@@ -29,4 +29,5 @@ jobs:
     - name: ebuild test
       run: |
         echo Add other actions to build,
-        echo test, and deploy your project.
+        emerge --info
+        lasalslsls
