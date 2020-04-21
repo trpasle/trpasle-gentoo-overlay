@@ -32,4 +32,5 @@ jobs:
       run: |
         USE='-ncurses -qt5' emerge --oneshot dev-util/cmake
         emerge sci-misc/alt
+        echo between
         emerge sci-misc/alt
