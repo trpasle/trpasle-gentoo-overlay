@@ -31,6 +31,8 @@ jobs:
     - name: emerge
       run: |
         USE='-ncurses -qt5' emerge --oneshot dev-util/cmake
+        dispatch-conf
         echo before
         emerge sci-misc/alt
+        dispatch-conf
         echo between
