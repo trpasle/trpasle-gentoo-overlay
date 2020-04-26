@@ -29,11 +29,15 @@ jobs:
         mkdir --parent --verbose /etc/portage/package.accept_keywords
         echo "sci-misc/alt" ~amd64 >> /etc/portage/package.accept_keywords/testbuild
         mkdir --parent --verbose /etc/portage/package.use/
+        echo '>=dev-util/cmake-3.16.5 qt5
+        >=dev-libs/libpcre2-10.34 pcre16
+        >=x11-libs/libxkbcommon-0.10.0 X
+        >=media-libs/gd-2.2.5-r2 jpeg truetype png fontconfig
+        >=media-libs/libglvnd-1.3.1 X' >> /etc/portage/package.use/alt
+        cat /etc/portage/package.use/alt
     - name: emerge
       run: |
         USE='-ncurses -qt5' emerge --oneshot dev-util/cmake
-        dispatch-conf
         echo before
         emerge sci-misc/alt
-        dispatch-conf
         echo between
