@@ -42,5 +42,6 @@ jobs:
               PORTAGE_ELOG_SYSTEM="echo save"' > /etc/portage/make.conf
     - name: emerge
       run: |
-        USE='-ncurses -qt5' emerge --oneshot dev-util/cmake
-        emerge sci-misc/alt
+        USE='-ncurses -qt5 -test' emerge --oneshot dev-util/cmake
+        USE='-test' emerge --onlydeps sci-misc/alt
+        emerge --verbose --jobs=1 sci-misc/alt
