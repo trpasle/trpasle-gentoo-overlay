@@ -36,7 +36,6 @@ jobs:
               FFLAGS="${CFLAGS}"
               FCFLAGS="${CFLAGS}"
               LDFLAGS="${LDFLAGS} -Wl,--defsym=__gentoo_check_ldflags__=0"
-              FEATURES="collision-protect ipc-sandbox network-sandbox sandbox split-log split-elog strict userfetch userpriv usersandbox"
               PORTAGE_ELOG_CLASSES="log warn error qa"
               PORTAGE_ELOG_SYSTEM="echo save"
               EMERGE_DEFAULT_OPTS="--jobs --autounmask-write=y --autounmask-use=y --autounmask=y --ask=n"' > /etc/portage/make.conf
