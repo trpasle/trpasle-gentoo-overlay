@@ -23,12 +23,8 @@ jobs:
         echo '[trpasle]' > /etc/portage/repos.conf/trpasle-overlay.conf
         echo "location = $GITHUB_WORKSPACE" >> /etc/portage/repos.conf/trpasle-overlay.conf
         eselect profile set default/linux/amd64/17.1
-<<<<<<< HEAD
-=======
-        echo 'FEATURES="-sandbox -usersandbox"' >> /etc/portage/make.conf
         echo 'EMERGE_DEFAULT_OPTS="--jobs --autounmask-write=y --autounmask-use=y --autounmask=y --ask=n"' >> /etc/portage/make.conf
         echo 'CONFIG_PROTECT_MASK="/etc/portage"' >> /etc/portage/make.conf
->>>>>>> parent of e382775... CI ALT package testing: fine-tune portage
         mkdir --parent --verbose /etc/portage/package.accept_keywords
         echo "sci-misc/alt" ~amd64 >> /etc/portage/package.accept_keywords/testbuild
         mkdir --parent --verbose /etc/portage/package.use/
@@ -36,27 +32,10 @@ jobs:
         >=dev-libs/libpcre2-10.34 pcre16
         >=x11-libs/libxkbcommon-0.10.0 X
         >=media-libs/gd-2.2.5-r2 jpeg truetype png fontconfig
-<<<<<<< HEAD
         >=media-libs/libglvnd-1.3.1 X' > /etc/portage/package.use/alt
-        echo 'CFLAGS="-march=native -O2 -pipe -frecord-gcc-switches"
-              CXXFLAGS="${CFLAGS}"
-              FFLAGS="${CFLAGS}"
-              FCFLAGS="${CFLAGS}"
-              LDFLAGS="${LDFLAGS} -Wl,--defsym=__gentoo_check_ldflags__=0"
-              PORTAGE_ELOG_CLASSES="log warn error qa"
-              PORTAGE_ELOG_SYSTEM="echo save"
-              EMERGE_DEFAULT_OPTS="--jobs --autounmask-write=y --autounmask-use=y --autounmask=y --ask=n"' > /etc/portage/make.conf
+        echo 'FEATURES="-sandbox -usersandbox"' >> /etc/portage/make.conf
     - name: emerge
       run: |
         USE='-ncurses -qt5 -test' emerge --oneshot dev-util/cmake
         USE='-test' emerge --onlydeps sci-misc/alt
-=======
-        >=media-libs/libglvnd-1.3.1 X' >> /etc/portage/package.use/alt
-        cat /etc/portage/package.use/alt
-    - name: emerge
-      run: |
-        USE='-ncurses -qt5' emerge --oneshot dev-util/cmake
-        echo before
->>>>>>> parent of e382775... CI ALT package testing: fine-tune portage
         emerge sci-misc/alt
-        echo between
