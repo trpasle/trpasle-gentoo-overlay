@@ -38,4 +38,4 @@ jobs:
       run: |
         USE='-ncurses -qt5 -test' emerge --oneshot dev-util/cmake
         USE='-test' emerge --onlydeps sci-misc/alt
-        emerge sci-misc/alt
+        FEATURES=test emerge sci-misc/alt
