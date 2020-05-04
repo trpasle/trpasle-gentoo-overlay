@@ -11,7 +11,7 @@ EGIT_REPO_URI="https://gitlab.fit.cvut.cz/algorithms-library-toolkit/automata-li
 
 KEYWORDS="~amd64"
 SLOT="0"
-DEPEND="media-gfx/graphviz
+DEPEND="media-gfx/graphviz[X]
 	dev-cpp/tclap
 	dev-libs/libxml2
 	dev-libs/jsoncpp
