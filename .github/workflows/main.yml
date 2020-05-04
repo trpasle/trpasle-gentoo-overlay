@@ -32,7 +32,8 @@ jobs:
         >=dev-libs/libpcre2-10.34 pcre16
         >=x11-libs/libxkbcommon-0.10.0 X
         >=media-libs/gd-2.2.5-r2 jpeg truetype png fontconfig
-        >=media-libs/libglvnd-1.3.1 X' > /etc/portage/package.use/alt
+        >=media-libs/libglvnd-1.3.1 X
+        media-gfx/graphviz X' > /etc/portage/package.use/alt
         echo 'FEATURES="-sandbox -usersandbox"' >> /etc/portage/make.conf
     - name: emerge
       run: |
