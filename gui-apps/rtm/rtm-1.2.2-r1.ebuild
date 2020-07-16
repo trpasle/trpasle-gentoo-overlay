@@ -11,7 +11,7 @@ SLOT="0"
 KEYWORDS="~amd64"
 
 src_prepare() {
-	mkdir rtm-1.2.2
-	mv etc/ opt/ usr/ rtm-1.2.2/
+	mkdir -p "$S"
+	mv "$WORKDIR/etc/" "$WORKDIR/opt/" "$WORKDIR/usr/" "$S"
 	eapply_user
 }
