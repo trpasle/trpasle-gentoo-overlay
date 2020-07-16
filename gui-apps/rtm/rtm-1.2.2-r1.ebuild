@@ -7,6 +7,5 @@ inherit rpm
 
 SRC_URI="https://www.rememberthemilk.com/download/linux/fedora/21/x86_64/rememberthemilk-1.2.2-1.x86_64.rpm"
 SLOT="0"
-RESTRICT="mirror"
 
 KEYWORDS="~amd64"
