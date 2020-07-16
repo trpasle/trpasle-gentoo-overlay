@@ -82,5 +82,6 @@ src_install() {
 	exeinto /opt/RememberTheMilk/
 	doins -r opt
 	doexe opt/RememberTheMilk/rememberthemilk
-	make_desktop_entry /opt/RememberTheMilk/rememberthemilk "Remember The Milk"
+	newicon opt/RememberTheMilk/resources/app.asar.unpacked/resources/app-icon-win10.ico RememberTheMilk.ico
+	make_desktop_entry /opt/RememberTheMilk/rememberthemilk "Remember The Milk" "RememberTheMilk.ico"
 }
