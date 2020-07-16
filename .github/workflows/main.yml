@@ -40,3 +40,25 @@ jobs:
         USE='-ncurses -qt5 -test' emerge --oneshot dev-util/cmake
         USE='-test' emerge --onlydeps sci-misc/alt
         FEATURES=test emerge sci-misc/alt
+  build-rtm:
+    container: container: gentoo/stage3-amd64
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2 # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+    - name: prepare environment
+      run: |
+        mkdir --parent --verbose /var/db/repos/gentoo
+        emerge-webrsync --quiet
+        mkdir --parent --verbose /etc/portage/repos.conf
+        echo '[trpasle]' > /etc/portage/repos.conf/trpasle-overlay.conf
+        echo "location = $GITHUB_WORKSPACE" >> /etc/portage/repos.conf/trpasle-overlay.conf
+        eselect profile set default/linux/amd64/17.1
+        echo 'EMERGE_DEFAULT_OPTS="--jobs --autounmask-write=y --autounmask-use=y --autounmask=y --ask=n"' >> /etc/portage/make.conf
+        echo 'CONFIG_PROTECT_MASK="/etc/portage"' >> /etc/portage/make.conf
+        mkdir --parent --verbose /etc/portage/package.accept_keywords
+        echo "gui-apps/rtm" ~amd64 >> /etc/portage/package.accept_keywords/testbuild
+        mkdir --parent --verbose /etc/portage/package.use/
+    - name: emerge
+      run: |
+        USE='-test' emerge --onlydeps gui-apps/rtm
+        FEATURES=test emerge gui-apps/rtm
