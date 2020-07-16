@@ -7,6 +7,7 @@ inherit rpm
 
 SRC_URI="https://www.rememberthemilk.com/download/linux/fedora/21/x86_64/rememberthemilk-1.2.2-1.x86_64.rpm"
 SLOT="0"
+RESTRICT="strip"
 
 KEYWORDS="~amd64"
 
@@ -18,6 +19,7 @@ src_unpack() {
 }
 
 src_install() {
+	into /
 	insinto /
 	doins -r opt
 }
