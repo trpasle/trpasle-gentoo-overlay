@@ -41,7 +41,7 @@ jobs:
         USE='-test' emerge --onlydeps sci-misc/alt
         FEATURES=test emerge sci-misc/alt
   build-rtm:
-    container: container: gentoo/stage3-amd64
+    container: gentoo/stage3-amd64
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2 # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
