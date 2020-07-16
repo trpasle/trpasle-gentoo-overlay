@@ -82,4 +82,5 @@ src_install() {
 	exeinto /opt/RememberTheMilk/
 	doins -r opt
 	doexe opt/RememberTheMilk/rememberthemilk
+	make_desktop_entry /opt/RememberTheMilk/rememberthemilk
 }
