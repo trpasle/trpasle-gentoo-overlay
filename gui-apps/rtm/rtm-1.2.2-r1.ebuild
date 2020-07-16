@@ -10,8 +10,9 @@ SLOT="0"
 
 KEYWORDS="~amd64"
 
-src_prepare() {
+src_unpack() {
+    rpm_src_unpack ${A}
+
 	mkdir -p "$S"
 	mv "$WORKDIR/etc/" "$WORKDIR/opt/" "$WORKDIR/usr/" "$S"
-	eapply_user
 }
