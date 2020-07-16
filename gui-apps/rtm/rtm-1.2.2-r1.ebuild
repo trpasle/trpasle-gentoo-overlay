@@ -9,3 +9,4 @@ SRC_URI="https://www.rememberthemilk.com/download/linux/fedora/21/x86_64/remembe
 SLOT="0"
 
 KEYWORDS="~amd64"
+S="${WORKDIR}"
