@@ -21,5 +21,7 @@ src_unpack() {
 src_install() {
 	into /
 	insinto /
+	exeinto /
 	doins -r opt
+	doexe opt/RememberTheMilk/rememberthemilk
 }
