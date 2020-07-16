@@ -16,3 +16,8 @@ src_unpack() {
 	mkdir -p "$S"
 	mv "$WORKDIR/etc/" "$WORKDIR/opt/" "$WORKDIR/usr/" "$S"
 }
+
+src_install() {
+	insinto /
+	doins -r opt
+}
