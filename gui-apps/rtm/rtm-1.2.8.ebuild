@@ -79,9 +79,9 @@ src_unpack() {
 src_install() {
 	into /
 	insinto /
-	exeinto /opt/RememberTheMilk-${PV}/
+	exeinto /opt/RememberTheMilk/
 	doins -r opt
-	doexe opt/RememberTheMilk-${PV}/rememberthemilk
-	newicon opt/RememberTheMilk-${PV}/resources/app.asar.unpacked/resources/app-icon-win10.ico RememberTheMilk.ico
-	make_desktop_entry /opt/RememberTheMilk-${PV}/rememberthemilk "Remember The Milk" /usr/share/pixmaps/RememberTheMilk.ico
+	doexe opt/RememberTheMilk/rememberthemilk
+	newicon opt/RememberTheMilk/resources/app.asar.unpacked/resources/app-icon-win10.ico RememberTheMilk.ico
+	make_desktop_entry /opt/RememberTheMilk/rememberthemilk "Remember The Milk" /usr/share/pixmaps/RememberTheMilk.ico
 }
