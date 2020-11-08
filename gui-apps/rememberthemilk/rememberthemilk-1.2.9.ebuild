@@ -5,11 +5,10 @@ EAPI="7"
 
 inherit desktop rpm
 
-SRC_URI="https://www.rememberthemilk.com/download/linux/fedora/21/x86_64/rememberthemilk-1.2.8-1.x86_64.rpm"
+SRC_URI="https://www.rememberthemilk.com/download/linux/fedora/21/x86_64/rememberthemilk-1.2.9-1.x86_64.rpm"
 DESCRIPTION="Client for the Remember the Milk TODO list service"
 HOMEPAGE="https://www.rememberthemilk.com/"
 SLOT="0"
-# RESTRICT="strip"
 
 KEYWORDS="~amd64"
 DEPEND="
@@ -69,19 +68,19 @@ DEPEND="
 		x11-libs/pixman
 		"
 
-src_unpack() {
-	rpm_src_unpack ${A}
+#src_unpack() {
+#	rpm_src_unpack ${A}
+#
+#	mkdir --parent "$S"
+#	mv "$WORKDIR/etc/" "$WORKDIR/opt/" "$WORKDIR/usr/" "$S"
+#}
 
-	mkdir -p "$S"
-	mv "$WORKDIR/etc/" "$WORKDIR/opt/" "$WORKDIR/usr/" "$S"
-}
-
-src_install() {
-	into /
-	insinto /
-	exeinto /opt/RememberTheMilk/
-	doins -r opt
-	doexe opt/RememberTheMilk/rememberthemilk
-	newicon opt/RememberTheMilk/resources/app.asar.unpacked/resources/app-icon-win10.ico RememberTheMilk.ico
-	make_desktop_entry /opt/RememberTheMilk/rememberthemilk "Remember The Milk" /usr/share/pixmaps/RememberTheMilk.ico
-}
+#src_install() {
+#	into /
+#	insinto /
+#	exeinto /opt/RememberTheMilk/
+#	doins -r opt
+#	doexe opt/RememberTheMilk/rememberthemilk
+#	newicon opt/RememberTheMilk/resources/app.asar.unpacked/resources/app-icon-win10.ico RememberTheMilk.ico
+#	make_desktop_entry /opt/RememberTheMilk/rememberthemilk "Remember The Milk" /usr/share/pixmaps/RememberTheMilk.ico
+#}
