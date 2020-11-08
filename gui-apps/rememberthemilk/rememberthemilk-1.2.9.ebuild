@@ -83,6 +83,6 @@ src_install() {
 	doexe opt/RememberTheMilk/rememberthemilk
 #	newicon opt/RememberTheMilk/resources/app.asar.unpacked/resources/app-icon-win10.ico RememberTheMilk.ico
 	doicon usr/share/pixmaps/rememberthemilk.png
-	domenu rememberthemilk
+	domenu usr/share/applications/rememberthemilk.desktop
 #	make_desktop_entry /opt/RememberTheMilk/rememberthemilk "Remember The Milk"
 }
