@@ -68,12 +68,12 @@ DEPEND="
 		x11-libs/pixman
 		"
 
-#src_unpack() {
-#	rpm_src_unpack ${A}
-#
-#	mkdir --parent "$S"
-#	mv "$WORKDIR/etc/" "$WORKDIR/opt/" "$WORKDIR/usr/" "$S"
-#}
+src_unpack() {
+	rpm_src_unpack ${A}
+
+	mkdir --parent "$S"
+	mv "$WORKDIR/etc/" "$WORKDIR/opt/" "$WORKDIR/usr/" "$S"
+}
 
 #src_install() {
 #	into /
