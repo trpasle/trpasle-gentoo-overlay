@@ -61,6 +61,8 @@ jobs:
         echo '>=app-text/ghostscript-gpl-9.50 cups
                 >=media-libs/libglvnd-1.3.1 X
                 >=x11-libs/cairo-1.16.0-r3 X' > /etc/portage/package.use/rememberthemilk
+        mkdir --parent --verbose /etc/portage/package.license
+        echo 'gui-apps/rememberthemilk all-rights-reserved' > /etc/portage/package.license/rememberthemilk
         echo 'FEATURES="-sandbox -usersandbox"' >> /etc/portage/make.conf
     - name: emerge
       run: |
