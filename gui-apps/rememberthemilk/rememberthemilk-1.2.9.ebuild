@@ -8,6 +8,7 @@ inherit desktop rpm
 SRC_URI="https://www.rememberthemilk.com/download/linux/fedora/21/x86_64/rememberthemilk-1.2.9-1.x86_64.rpm"
 DESCRIPTION="Client for the Remember the Milk TODO list service"
 HOMEPAGE="https://www.rememberthemilk.com/"
+LICENSE="all-rights-reserved"
 SLOT="0"
 
 KEYWORDS="~amd64"
