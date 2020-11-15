@@ -6,7 +6,6 @@ inherit git-r3
 DESCRIPTION="Algorithms Library Toolkit (ALT) is a tool from the area of stringology."
 HOMEPAGE="https://alt.pecka.me/"
 LICENSE="GPL-3"
-# SRC_URI="alt-9999.tar.xz"
 EGIT_REPO_URI="https://gitlab.fit.cvut.cz/algorithms-library-toolkit/automata-library.git"
 
 KEYWORDS="~amd64"
@@ -18,20 +17,22 @@ DEPEND="media-gfx/graphviz[X]
 	sys-libs/readline
 	dev-util/cmake[qt5]
 	dev-qt/qtxml
-	|| ( sys-devel/gcc sys-devel/clang )"
+	>=sys-devel/gcc-10.0.0"
 
 src_prepare() {
 	mkdir --verbose build && cd build/
+	GCCVERSION=""
+	[ "$(gcc-config -c | grep -o  "\-[[:digit:]]*\." | grep -o "[[:digit:]]*")" -ge "10" ] ||
+	GCCVERSION=$(gcc-config -l | grep "x86_64-pc-linux-gnu" | grep  -o  "\-[[:digit:]][[:digit:]].*[[:digit:]]")
+	if [ "$GCCVERSION" != "" ]
+	then
+		CC=gcc"$GCCVERSION"
+		CXX=g++"$GCCVERSION"
+	fi
 	S="${WORKDIR}/${P}/build"
-	../CMake/generate.py -wm || die
 	default
 }
 
 src_configure() {
 	cmake .. -DBUILD_TYPE=Release  || die
 }
-
-#src_compile() {
-#	cd build/
-#	bash build.sh -n -d release -m Release || die
-#}
