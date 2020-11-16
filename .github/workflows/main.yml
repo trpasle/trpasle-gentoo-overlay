@@ -26,7 +26,8 @@ jobs:
         echo 'EMERGE_DEFAULT_OPTS="--jobs --autounmask-write=y --autounmask-use=y --autounmask=y --ask=n"' >> /etc/portage/make.conf
         echo 'CONFIG_PROTECT_MASK="/etc/portage"' >> /etc/portage/make.conf
         mkdir --parent --verbose /etc/portage/package.accept_keywords
-        echo "sci-misc/alt" ~amd64 >> /etc/portage/package.accept_keywords/testbuild
+        echo "sci-misc/alt ~amd64" >> /etc/portage/package.accept_keywords/testbuild
+        echo "sys-devel/gcc ~amd64" >> /etc/portage/package.accept_keywords/testbuild
         mkdir --parent --verbose /etc/portage/package.use/
         echo '>=dev-util/cmake-3.16.5 qt5
         >=dev-libs/libpcre2-10.34 pcre16
