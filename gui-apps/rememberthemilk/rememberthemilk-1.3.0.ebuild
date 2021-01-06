@@ -5,7 +5,7 @@ EAPI="7"
 
 inherit desktop rpm
 
-SRC_URI="https://www.rememberthemilk.com/download/linux/fedora/21/x86_64/rememberthemilk-1.2.9-1.x86_64.rpm"
+SRC_URI="https://www.rememberthemilk.com/download/linux/fedora/21/x86_64/rememberthemilk-1.3.0-1.x86_64.rpm"
 DESCRIPTION="Client for the Remember the Milk TODO list service"
 HOMEPAGE="https://www.rememberthemilk.com/"
 LICENSE="all-rights-reserved"
@@ -82,8 +82,6 @@ src_install() {
 	exeinto /opt/RememberTheMilk/
 	doins -r opt
 	doexe opt/RememberTheMilk/rememberthemilk
-#	newicon opt/RememberTheMilk/resources/app.asar.unpacked/resources/app-icon-win10.ico RememberTheMilk.ico
 	doicon usr/share/pixmaps/rememberthemilk.png
 	domenu usr/share/applications/rememberthemilk.desktop
-#	make_desktop_entry /opt/RememberTheMilk/rememberthemilk "Remember The Milk"
 }
