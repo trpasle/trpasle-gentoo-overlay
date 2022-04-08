@@ -87,7 +87,8 @@ jobs:
         mkdir --parent --verbose /etc/portage/package.accept_keywords
         echo "app-misc/xmind" ~amd64 >> /etc/portage/package.accept_keywords/testbuild
         mkdir --parent --verbose /etc/portage/package.use/
-        echo 'x11-libs/cairo X' > /etc/portage/package.use/rememberthemilk
+        echo 'media-libs/libglvnd X
+                x11-libs/cairo-1.16.0-r3' > /etc/portage/package.use/rememberthemilk
         mkdir --parent --verbose /etc/portage/package.license
         echo 'app-misc/xmind XPLA no-source-code' > /etc/portage/package.license/xmind
         echo 'FEATURES="-sandbox -usersandbox"' >> /etc/portage/make.conf
